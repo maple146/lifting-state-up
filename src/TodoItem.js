@@ -1,5 +1,3 @@
-import {useState} from 'react'
-
 function getClassName(selected) {
   if (selected) {
     return 'todo-item-container selected'
@@ -8,15 +6,9 @@ function getClassName(selected) {
   }
 }
 
-export default function TodoItem ({ todo }) {
-  const [selected, setSelected] = useState(false)
-
-  function onClick() {
-    setSelected((value) => !value)
-  }
-
+export default function TodoItem ({ todo, onItemClick }) {
   return (
-    <div className={getClassName(selected)} onClick={onClick}>
+    <div className={getClassName(todo.selected)} onClick={() => onItemClick(todo.id)}>
       <p className='todo-title'>{todo.title}</p>
     </div>
   )
